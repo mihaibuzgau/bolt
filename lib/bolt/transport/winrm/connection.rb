@@ -57,8 +57,7 @@ module Bolt
             @connection = ::WinRM::Connection.new(options)
             @connection.logger = @transport_logger
 
-            @session = @connection.shell(:powershell)
-            @session.run('$PSVersionTable.PSVersion')
+            @session = @connection.shell(:cmd)
             @logger.debug { "Opened session" }
           end
         rescue Timeout::Error
